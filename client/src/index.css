@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #05070a;
+  color: #f4f7fb;
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+/* The whole app lives in a centered phone frame, even on desktop. */
+.app-shell {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  background: #0b0e13;
+  overflow-x: hidden;
+  box-shadow: 0 0 0 1px #1c2430, 0 40px 120px rgba(0, 0, 0, 0.6);
+}
+
+.floodlit {
+  background:
+    radial-gradient(120% 80% at 50% -10%, rgba(45, 211, 111, 0.18) 0%, transparent 55%),
+    radial-gradient(90% 60% at 100% 0%, rgba(255, 59, 107, 0.12) 0%, transparent 50%),
+    #0b0e13;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a3340;
+  border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid #2dd36f;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+input,
+select,
+textarea,
+button {
+  font-family: inherit;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

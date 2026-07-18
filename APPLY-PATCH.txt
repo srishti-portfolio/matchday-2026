@@ -1,0 +1,50 @@
+MATCHDAY - INTERNATIONALIZATION (i18n) PATCH
+=============================================
+
+This adds full multi-language support: pick a language at sign-up (or in the
+You tab) and the ENTIRE app switches to it instantly. 12 languages, Arabic
+included with right-to-left layout.
+
+HOW TO APPLY
+------------
+This zip mirrors your project's folder structure (client/src/...). Extract it
+directly OVER your project folder, letting it overwrite when asked.
+
+  Windows: extract here, then copy the "client" folder into
+           C:\Users\DELL\Desktop\matchday  (choose "Replace files")
+
+That's it - 5 new files are added and 14 existing files are updated. No other
+files are touched. Nothing is deleted.
+
+AFTER EXTRACTING
+----------------
+  npm run dev
+
+Then open http://localhost:5173 - the sign-up screen now has a language
+dropdown that retranslates the page as you pick. Create an account in, say,
+Spanish or Arabic and the whole app follows.
+
+  npm --prefix client test     ->  should show 52 passing
+  npm --prefix client run build ->  should build clean
+
+WHAT'S IN HERE
+--------------
+NEW:
+  client/src/i18n/strings.js            all 12 languages (116 keys each)
+  client/src/i18n/I18nContext.jsx       the provider + useT() hook
+  client/src/i18n/detect.js             browser-language detection
+  client/src/i18n/i18n.test.jsx         52 tests for the i18n layer
+  client/src/test/renderWithProviders.jsx  test helper
+
+CHANGED (wired up to translations):
+  client/src/App.jsx                    wraps the app in the language provider
+  client/src/components/*.jsx           all 11 screens now use t("...")
+  ...plus two updated test files
+
+A NOTE ON THE TRANSLATIONS
+--------------------------
+These were machine-generated. The Latin-script languages (Spanish, French,
+Portuguese, German, Italian, Dutch) read well. For a judged demo, it's worth
+having a native speaker glance at Arabic, Hindi, Korean, Japanese, and Chinese
+if you know one. To tweak any wording, edit client/src/i18n/strings.js - the
+English block ("en") is the reference; every other block mirrors its keys.
